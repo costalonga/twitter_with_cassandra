@@ -35,26 +35,22 @@ public class HelloTweet {
             tweets.createTable();
             System.out.println("Create table tweets");
 
-//            // TODO: Change to use twitter4j api to get real tweets
+            // TODO: Change to use twitter4j api to get real tweets
             for (int i = 0; i < 5; i++) {
                 Tweet tw = new Tweet("id" + i,"User_" + i, "Message_" + i);
                 tweets.insertTweet(tw);
                 System.out.println("Inserted tweet");
             }
 
-//            Tweet tw = new Tweet("id1","User_1", "Message_1");
-//            tweets.insertTweet(tw);
-//            System.out.println("Inserted tweet");
+            tweets.selectAll(); // Apresenta todas as tuplas
+            tweets.deleteTweet("id2"); // Deleta um tweet da tabela
+            tweets.selectAll();
 
-//            tweets.selectAll(); // Apresenta todas as tuplas
-//            tweets.deleteTweet("id2"); // Deleta um tweet da tabela
-//            tweets.selectAll();
-//
-//            tweets.deleteTable("tweets");
-//            System.out.println("Deleted tweets");
-//
-//            sr.deleteKeyspace("library");
-//            System.out.println("Delete keyspace library");
+            tweets.deleteTable("tweets");
+            System.out.println("Deleted tweets");
+
+            sr.deleteKeyspace("library");
+            System.out.println("Delete keyspace library");
 
         } finally {
             if (cluster != null) cluster.close();
